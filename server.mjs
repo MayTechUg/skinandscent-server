@@ -17,13 +17,17 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const upload = multer({ storage: multer.memoryStorage() });
 
-app.use(bodyParser.json());
-app.use(cors({
-    origin: 'https://maytechug.github.io/skinandscent',  // Replace with your frontend URL
+// CORS configuration
+const corsOptions = {
+    origin: 'https://maytechug.github.io/skinandscent', // Replace with your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
-}));
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors()); // Handle pre-flight requests
+app.use(bodyParser.json());
 
 // Function to authenticate with Google API
 const authenticateGoogle = () => {
