@@ -19,7 +19,7 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 // CORS configuration
 const corsOptions = {
-    origin: 'https://maytechug.github.io/skinandscent', // Replace with your frontend URL
+    origin: '*', 
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
